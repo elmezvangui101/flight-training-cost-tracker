@@ -16,6 +16,9 @@ import {
   trackThemeToggled 
 } from '@/components/analytics';
 
+// Force dynamic rendering to avoid SSR issues
+export const dynamic = 'force-dynamic';
+
 interface Expense {
   id: number;
   amount: number;
@@ -68,10 +71,13 @@ export default function Home() {
   const [dateError, setDateError] = useState('');
 
   useEffect(() => {
+    // Check if we're in the browser
+    if (typeof window === 'undefined') return;
+
     loadExpenses();
     loadDarkModePreference();
     loadBudgetGoal();
-    setIsOnline(navigator.onLine);
+
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
     window.addEventListener('online', handleOnline);
@@ -97,19 +103,23 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // Apply dark mode class to document
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    // Apply dark mode class to document (client-side only)
+    if (typeof window !== 'undefined') {
+      if (darkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     }
   }, [darkMode]);
 
   const loadExpenses = () => {
     try {
-      const stored = localStorage.getItem('flightExpenses');
-      if (stored) {
-        setExpenses(JSON.parse(stored));
+      if (typeof window !== 'undefined') {
+        const stored = localStorage.getItem('flightExpenses');
+        if (stored) {
+          setExpenses(JSON.parse(stored));
+        }
       }
     } catch (error) {
       console.error('Error loading expenses:', error);
@@ -118,9 +128,11 @@ export default function Home() {
 
   const loadDarkModePreference = () => {
     try {
-      const stored = localStorage.getItem('darkMode');
-      if (stored !== null) {
-        setDarkMode(JSON.parse(stored));
+      if (typeof window !== 'undefined') {
+        const stored = localStorage.getItem('darkMode');
+        if (stored !== null) {
+          setDarkMode(JSON.parse(stored));
+        }
       }
     } catch (error) {
       console.error('Error loading dark mode preference:', error);
@@ -135,7 +147,9 @@ export default function Home() {
     trackThemeToggled(newDarkMode ? 'dark' : 'light');
     
     try {
-      localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
+      }
     } catch (error) {
       console.error('Error saving dark mode preference:', error);
     }
@@ -143,10 +157,12 @@ export default function Home() {
 
   const loadBudgetGoal = () => {
     try {
-      const stored = localStorage.getItem('budgetGoal');
-      if (stored) {
-        setBudgetGoal(parseFloat(stored));
-        setBudgetInput(stored);
+      if (typeof window !== 'undefined') {
+        const stored = localStorage.getItem('budgetGoal');
+        if (stored) {
+          setBudgetGoal(parseFloat(stored));
+          setBudgetInput(stored);
+        }
       }
     } catch (error) {
       console.error('Error loading budget goal:', error);
@@ -155,8 +171,10 @@ export default function Home() {
 
   const saveBudgetGoal = (goal: number) => {
     try {
-      localStorage.setItem('budgetGoal', goal.toString());
-      setBudgetGoal(goal);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('budgetGoal', goal.toString());
+        setBudgetGoal(goal);
+      }
     } catch (error) {
       console.error('Error saving budget goal:', error);
     }
@@ -209,7 +227,9 @@ export default function Home() {
 
   const saveToLocalStorage = (expenses: Expense[]) => {
     try {
-      localStorage.setItem('flightExpenses', JSON.stringify(expenses));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('flightExpenses', JSON.stringify(expenses));
+      }
     } catch (error) {
       console.error('Error saving expenses:', error);
       setError('Storage quota exceeded. Please export your data.');
