@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Main page -->
+  <url>
+    <loc>https://flightcosttracker.com/</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://flightcosttracker.com/flight-training-cost-tracker.png</image:loc>
+      <image:title>Flight Training Cost Tracker - Free Budget App</image:title>
+      <image:caption>Free expense tracking app for student pilots to monitor flight training costs</image:caption>
+    </image:image>
+  </url>
+
+  <!-- How It Works section (anchor) -->
+  <url>
+    <loc>https://flightcosttracker.com/#how-it-works</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- FAQ section (anchor) -->
+  <url>
+    <loc>https://flightcosttracker.com/#faq</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- PWA Manifest -->
+  <url>
+    <loc>https://flightcosttracker.com/manifest.json</loc>
+    <lastmod>2025-01-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

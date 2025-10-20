@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+
+# Allow specific important files
+Allow: /manifest.json
+Allow: /sw.js
+Allow: /icons/
+
+# Sitemap location
+Sitemap: https://flightcosttracker.com/sitemap.xml
+
+# Crawl delay (optional, be respectful)
+Crawl-delay: 1
+
+# Popular search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
