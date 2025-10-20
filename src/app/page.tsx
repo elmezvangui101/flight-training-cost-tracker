@@ -178,16 +178,16 @@ export default function Home() {
   };
 
   const getBudgetStatus = () => {
-    if (budgetGoal <= 0) return { text: 'No budget set', color: 'text-gray-600 dark:text-gray-400' };
+    if (budgetGoal <= 0) return { text: 'No budget set', color: 'text-gray-600 dark:text-gray-300' };
     const total = calculateTotal();
     const percentage = (total / budgetGoal) * 100;
     
     if (percentage >= 100) {
-      return { text: 'Budget exceeded!', color: 'text-red-600 dark:text-red-400' };
+      return { text: 'Budget exceeded!', color: 'text-red-600 dark:text-red-300' };
     } else if (percentage >= 80) {
       return { text: 'Budget warning', color: 'text-yellow-600 dark:text-yellow-400' };
     } else {
-      return { text: 'On track', color: 'text-green-600 dark:text-green-400' };
+      return { text: 'On track', color: 'text-green-600 dark:text-green-300' };
     }
   };
 
@@ -463,12 +463,12 @@ export default function Home() {
           <div className="total-display rounded-xl p-6 mb-8 aviation-card">
             <div className="flex items-center justify-center gap-2 mb-3">
               <AviationIcon type="dollar" size={20} />
-              <div className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Investment</div>
+              <div className="text-sm font-medium text-gray-600 dark:text-gray-300">Total Investment</div>
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-800 to-sky-600 bg-clip-text text-transparent" id="totalAmount">
               {formatCurrency(total)}
             </h2>
-            <div className="text-sm text-gray-600 dark:text-gray-400 mt-3 flex items-center justify-center gap-2">
+            <div className="text-sm text-gray-600 dark:text-gray-300 mt-3 flex items-center justify-center gap-2">
               <AviationIcon type="gauge" size={16} />
               Your Private Pilot License journey
             </div>
@@ -493,7 +493,7 @@ export default function Home() {
             {budgetGoal > 0 ? (
               <div>
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-sm text-wing-gray dark:text-gray-400 flex items-center gap-2">
+                  <span className="text-sm text-wing-gray dark:text-gray-300 flex items-center gap-2">
                     <AviationIcon type="dollar" size={16} />
                     {formatCurrency(total)} of {formatCurrency(budgetGoal)}
                   </span>
@@ -505,10 +505,10 @@ export default function Home() {
                     />
                     <span className={`text-sm font-medium ${
                       calculateBudgetProgress() >= 100 
-                        ? 'text-nav-red dark:text-red-400' 
+                        ? 'text-nav-red dark:text-red-300' 
                         : calculateBudgetProgress() >= 80 
-                        ? 'text-fuel-orange dark:text-yellow-400' 
-                        : 'text-altitude-green dark:text-green-400'
+                        ? 'text-fuel-orange dark:text-yellow-300' 
+                        : 'text-altitude-green dark:text-green-300'
                     }`}>
                       {getBudgetStatus().text}
                     </span>
@@ -528,13 +528,13 @@ export default function Home() {
                     <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
                   </div>
                 </div>
-                <div className="text-right text-sm text-wing-gray dark:text-gray-400 flex items-center justify-end gap-2">
+                <div className="text-right text-sm text-wing-gray dark:text-gray-300 flex items-center justify-end gap-2">
                   <AviationIcon type="trending" size={14} />
                   {calculateBudgetProgress().toFixed(1)}% of budget used
                 </div>
               </div>
             ) : (
-              <div className="text-center py-6 text-wing-gray dark:text-gray-400">
+              <div className="text-center py-6 text-wing-gray dark:text-gray-300">
                 <AviationIcon type="navigation" size={32} className="mx-auto mb-3 opacity-50" />
                 <p>No flight plan set. Click "Set Budget" to track your training journey.</p>
               </div>
@@ -590,18 +590,18 @@ export default function Home() {
               </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400 px-4 py-3 rounded mb-4" role="alert" aria-live="polite">
+              <div className="bg-red-50 border border-red-200 text-red-700 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300 px-4 py-3 rounded mb-4" role="alert" aria-live="polite">
                 {error}
               </div>
             )}
             {success && (
-              <div className="flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 dark:bg-green-900/20 dark:border-green-800 dark:text-green-400 px-4 py-3 rounded mb-4" role="status" aria-live="polite">
+              <div className="flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 dark:bg-green-900/20 dark:border-green-800 dark:text-green-300 px-4 py-3 rounded mb-4" role="status" aria-live="polite">
                 <svg className="w-5 h-5 text-green-600" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clipRule="evenodd"/></svg>
                 <span>{success}</span>
               </div>
             )}
             {exportSuccess && (
-              <div className="bg-blue-50 border border-blue-200 text-blue-700 dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-400 px-4 py-3 rounded mb-4" role="status" aria-live="polite">
+              <div className="bg-blue-50 border border-blue-200 text-blue-700 dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-300 px-4 py-3 rounded mb-4" role="status" aria-live="polite">
                 {exportSuccess}
               </div>
             )}
@@ -626,7 +626,7 @@ export default function Home() {
                       required
                     />
                     {amountError && (
-                      <p id="amount-error" className="mt-1 text-xs text-red-600 dark:text-red-400">{amountError}</p>
+                      <p id="amount-error" className="mt-1 text-xs text-red-600 dark:text-red-300">{amountError}</p>
                     )}
                   </div>
 
@@ -649,7 +649,7 @@ export default function Home() {
                       ))}
                     </select>
                     {categoryError && (
-                      <p id="category-error" className="mt-1 text-xs text-red-600 dark:text-red-400">{categoryError}</p>
+                      <p id="category-error" className="mt-1 text-xs text-red-600 dark:text-red-300">{categoryError}</p>
                     )}
                   </div>
                 </div>
@@ -670,7 +670,7 @@ export default function Home() {
                       required
                     />
                     {dateError && (
-                      <p id="date-error" className="mt-1 text-xs text-red-600 dark:text-red-400">{dateError}</p>
+                      <p id="date-error" className="mt-1 text-xs text-red-600 dark:text-red-300">{dateError}</p>
                     )}
                   </div>
 
@@ -734,7 +734,7 @@ export default function Home() {
           <section id="expenses" className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-sky-200 dark:border-sky-800 p-6 mb-8">
             <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">Expenses</h2>
             {expenses.length === 0 ? (
-              <div className="text-center py-8 text-gray-600 dark:text-gray-400">
+              <div className="text-center py-8 text-gray-600 dark:text-gray-300">
                 No expenses yet. Add your first expense above!
               </div>
             ) : (
@@ -749,7 +749,7 @@ export default function Home() {
                     <div className="flex justify-between items-start mb-2">
                       <div className="flex-1">
                         <div className="font-semibold text-gray-800 dark:text-gray-200">{expense.category}</div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400">{expense.date}</div>
+                        <div className="text-sm text-gray-500 dark:text-gray-300">{expense.date}</div>
                       </div>
                       <div className="text-lg font-bold text-gray-900 dark:text-gray-100 mr-4">
                         {formatCurrency(expense.amount)}
@@ -757,20 +757,20 @@ export default function Home() {
                       <div className="flex space-x-2">
                         <button
                           onClick={() => handleEdit(expense)}
-                          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm"
+                          className="text-blue-600 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleDelete(expense.id, expense.amount)}
-                          className="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 font-medium text-sm"
+                          className="text-red-600 dark:text-red-300 hover:text-red-800 dark:hover:text-red-300 font-medium text-sm"
                         >
                           Delete
                         </button>
                       </div>
                     </div>
                     {expense.notes && (
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                      <div className="text-sm text-gray-600 dark:text-gray-300 mt-2">
                         {expense.notes}
                       </div>
                     )}
@@ -870,7 +870,7 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Edit Expense</h3>
               
               {editError && (
-                <div className="bg-red-50 border border-red-200 text-red-700 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400 px-4 py-3 rounded mb-4">
+                <div className="bg-red-50 border border-red-200 text-red-700 dark:bg-red-900/20 dark:border-red-800 dark:text-red-300 px-4 py-3 rounded mb-4">
                   {editError}
                 </div>
               )}
