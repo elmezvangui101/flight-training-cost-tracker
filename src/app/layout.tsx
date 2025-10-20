@@ -15,23 +15,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Flight Training Cost Tracker | Free Budget App for Student Pilots",
-  description: "Free flight training cost tracker for student pilots. Track every dollar from first lesson to checkride. Budget your PPL expenses with our simple, privacy-focused app. No signup required.",
+  title: "Flight Training Cost Tracker | Professional Aviation Expense Management",
+  description: "Professional flight training cost tracker for pilots and aviation organizations. Advanced budget management, expense categorization, and progress monitoring with aviation-themed interface. Privacy-focused and secure.",
   keywords: [
     "flight training cost tracker",
-    "student pilot budget app", 
-    "pilot training expense tracker",
-    "track flight training costs",
-    "aviation expense tracker free",
-    "flight training budget calculator",
-    "PPL cost calculator",
-    "flight school budget tool",
+    "aviation expense management", 
+    "pilot training budget tracker",
+    "professional flight cost calculator",
+    "aviation expense tracker",
+    "flight training budget planner",
+    "PPL cost management",
+    "flight school expense tracker",
     "aircraft rental cost tracker",
-    "private pilot license cost"
+    "aviation financial planning"
   ],
-  authors: [{ name: "Flight Cost Tracker" }],
-  creator: "Flight Cost Tracker",
-  publisher: "Flight Cost Tracker",
+  authors: [{ name: "Aviation Cost Tracker" }],
+  creator: "Aviation Cost Tracker",
+  publisher: "Aviation Cost Tracker",
   robots: "index, follow",
   icons: {
     icon: "/icons/icon-192x192.png",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Flight Cost",
+    title: "FlightCost",
   },
   formatDetection: {
     telephone: false,
@@ -51,10 +51,10 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Flight Training Cost Tracker | Free Budget App for Student Pilots",
-    description: "Track every dollar of your flight training. Free expense tracker designed specifically for student pilots. No signup, your data stays private.",
+    title: "Flight Training Cost Tracker | Professional Aviation Expense Management",
+    description: "Professional flight training cost tracker with advanced budget management and aviation-themed interface. Secure, privacy-focused expense tracking for pilots and aviation organizations.",
     url: "/",
-    siteName: "Flight Cost Tracker",
+    siteName: "Aviation Cost Tracker",
     type: "website",
     locale: "en_US",
     images: [
@@ -62,21 +62,21 @@ export const metadata: Metadata = {
         url: "/flight-training-cost-tracker.png",
         width: 1200,
         height: 630,
-        alt: "Flight Training Cost Tracker - Free Budget App for Student Pilots",
+        alt: "Flight Training Cost Tracker - Professional Aviation Expense Management",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flight Training Cost Tracker | Free Budget App for Student Pilots",
-    description: "Track every dollar of your flight training. Free expense tracker designed specifically for student pilots.",
+    title: "Flight Training Cost Tracker | Professional Aviation Expense Management",
+    description: "Professional flight training cost tracker with advanced budget management and aviation-themed interface.",
     images: ["/flight-training-cost-tracker.png"],
   },
   other: {
     "mobile-web-app-capable": "yes",
-    "application-name": "Flight Cost",
-    "apple-mobile-web-app-title": "Flight Cost",
-    "msapplication-TileColor": "#3b82f6",
+    "application-name": "FlightCost",
+    "apple-mobile-web-app-title": "FlightCost",
+    "msapplication-TileColor": "#FF8600",
     "msapplication-config": "/browserconfig.xml",
     "google-site-verification": "YOUR_VERIFICATION_CODE",
   },

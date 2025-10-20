@@ -10,6 +10,11 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			'sans': ['Inter', 'system-ui', 'sans-serif'],
+			'mono': ['JetBrains Mono', 'monospace'],
+			'aviation': ['Inter', 'system-ui', 'sans-serif'],
+		},
   		colors: {
 			background: 'hsl(var(--background))',
 			foreground: 'hsl(var(--foreground))',
@@ -51,13 +56,19 @@ const config: Config = {
 				'4': 'hsl(var(--chart-4))',
 				'5': 'hsl(var(--chart-5))'
 			},
-			// Brand color aliases for utility classes like text-cockpit-blue
+			// Enhanced aviation-themed color palette
 			'cockpit-blue': '#1e3a8a',
 			'horizon-blue': '#3b82f6',
+			'sky-blue': '#6EC6FF',
+			'cockpit-grey': '#333A44',
 			'wing-gray': '#6b7280',
-			'altitude-green': '#10b981',
-			'fuel-orange': '#f59e0b',
-			'nav-red': '#ef4444'
+			'altitude-green': '#35C759',
+			'fuel-orange': '#FF8600',
+			'nav-red': '#ef4444',
+			'cloud-white': '#f8fafc',
+			// CTA accent colors
+			'aviation-orange': '#FF8600',
+			'aviation-green': '#35C759',
 		},
   		borderRadius: {
   			lg: 'var(--radius)',

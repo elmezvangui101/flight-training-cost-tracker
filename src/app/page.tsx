@@ -395,7 +395,7 @@ export default function Home() {
   const categoryBreakdown = calculateCategoryBreakdown();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-horizon-blue/5 dark:from-gray-900 dark:via-gray-800 dark:to-cockpit-blue/10 relative">
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-slate-50 to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-slate-900 relative">
       {/* Aviation Background Elements */}
       <AviationBackground />
 
@@ -449,13 +449,13 @@ export default function Home() {
 
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="floating">
-              <AviationIcon type="plane" size={40} />
+              <AviationIcon type="plane" size={48} className="text-orange-500" />
             </div>
-            <h1 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-cockpit-blue via-sky-600 to-horizon-blue bg-clip-text text-transparent">
+            <h1 className="text-5xl sm:text-6xl font-black font-aviation bg-gradient-to-r from-blue-600 via-sky-600 to-blue-800 bg-clip-text text-transparent tracking-tight">
               Flight Training Cost Tracker
             </h1>
           </div>
-          <p className="text-lg text-gray-700 dark:text-gray-200 mb-6 subtitle">
+          <p className="text-xl text-gray-700 dark:text-gray-200 mb-8 subtitle font-medium">
             Track every dollar from first lesson to checkride
           </p>
 
@@ -465,7 +465,7 @@ export default function Home() {
               <AviationIcon type="dollar" size={20} />
               <div className="text-sm font-medium text-gray-600 dark:text-gray-300">Total Investment</div>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-800 to-sky-600 bg-clip-text text-transparent" id="totalAmount">
+            <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-orange-500 via-orange-600 to-green-500 bg-clip-text text-transparent" id="totalAmount">
               {formatCurrency(total)}
             </h2>
             <div className="text-sm text-gray-600 dark:text-gray-300 mt-3 flex items-center justify-center gap-2">
@@ -551,7 +551,7 @@ export default function Home() {
                       placeholder="Enter budget target"
                       value={budgetInput}
                       onChange={(e) => setBudgetInput(e.target.value)}
-                      className="w-full pl-10 pr-3 py-2 aviation-input rounded-lg border border-sky-200 dark:border-sky-800 bg-white/80 dark:bg-gray-800/80 text-cockpit-blue dark:text-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                      className="w-full pl-10 pr-3 py-2 aviation-input rounded-lg focus:outline-none"
                       step="0.01"
                       min="0"
                     />
@@ -584,9 +584,9 @@ export default function Home() {
 
             {/* Add Expense Form */}
             <section id="add-expense" className="aviation-card rounded-xl p-6 mb-8 hover-lift border border-sky-200 dark:border-sky-800 shadow-lg" aria-label="Add expense form">
-              <div className="flex items-center gap-2 mb-6">
-                <AviationIcon type="plane" size={24} />
-                <h2 className="text-2xl font-bold text-cockpit-blue dark:text-sky-400">Log Flight Training Expense</h2>
+              <div className="flex items-center gap-3 mb-6">
+                <AviationIcon type="navigation" size={28} />
+                <h2 className="text-3xl font-bold font-aviation text-cockpit-blue dark:text-sky-400">Log Flight Training Expense</h2>
               </div>
 
             {error && (
@@ -622,7 +622,7 @@ export default function Home() {
                       onChange={handleAmountChange}
                       aria-invalid={!!amountError}
                       aria-describedby="amount-error"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:border-blue-500"
+                      className="w-full px-3 py-2 aviation-input rounded-lg focus:outline-none"
                       required
                     />
                     {amountError && (
@@ -640,7 +640,7 @@ export default function Home() {
                       onChange={handleCategoryChange}
                       aria-invalid={!!categoryError}
                       aria-describedby="category-error"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:border-blue-500"
+                      className="w-full px-3 py-2 aviation-select rounded-lg focus:outline-none"
                       required
                     >
                       <option value="">Select a category</option>
@@ -666,7 +666,7 @@ export default function Home() {
                       onChange={handleDateChange}
                       aria-invalid={!!dateError}
                       aria-describedby="date-error"
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:border-blue-500"
+                      className="w-full px-3 py-2 aviation-input rounded-lg focus:outline-none"
                       required
                     />
                     {dateError && (
@@ -685,7 +685,7 @@ export default function Home() {
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                       maxLength={200}
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:border-blue-500"
+                      className="w-full px-3 py-2 aviation-input rounded-lg focus:outline-none"
                     />
                   </div>
                 </div>
@@ -693,7 +693,7 @@ export default function Home() {
 
               <button
                 type="submit"
-                className="w-full bg-blue-900 dark:bg-blue-800 text-white py-3 px-4 rounded-md shadow hover:-translate-y-0.5 hover:bg-blue-800 dark:hover:bg-blue-700 active:bg-blue-900 transition-all font-semibold text-lg min-h-[48px]"
+                className="w-full aviation-btn-primary py-3 px-4 rounded-md shadow hover:-translate-y-0.5 transition-all font-semibold text-lg min-h-[48px]"
               >
                 Add Expense
               </button>
@@ -705,7 +705,10 @@ export default function Home() {
           {/* Category Breakdown */}
           {categoryBreakdown.length > 0 && (
             <section id="category-breakdown" className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-sky-200 dark:border-sky-800 p-6 mb-8">
-              <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">Spending by Category</h2>
+              <div className="flex items-center gap-3 mb-4">
+          <AviationIcon type="trending" size={28} />
+          <h2 className="text-3xl font-bold font-aviation mb-4 text-gray-800 dark:text-gray-200">Spending by Category</h2>
+        </div>
               {/* Text Breakdown */}
               <div className="space-y-3">
                 {categoryBreakdown.map(({ category, amount, percentage }) => (
@@ -732,7 +735,10 @@ export default function Home() {
 
           {/* Expense List */}
           <section id="expenses" className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-sky-200 dark:border-sky-800 p-6 mb-8">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">Expenses</h2>
+            <div className="flex items-center gap-3 mb-4">
+          <AviationIcon type="clock" size={28} />
+          <h2 className="text-3xl font-bold font-aviation mb-4 text-gray-800 dark:text-gray-200">Expenses</h2>
+        </div>
             {expenses.length === 0 ? (
               <div className="text-center py-8 text-gray-600 dark:text-gray-300">
                 No expenses yet. Add your first expense above!
@@ -783,11 +789,11 @@ export default function Home() {
           {/* Export Button */}
           <div className="mb-8 text-center">
             <button
-              onClick={exportToCSV}
-              className="bg-green-600 text-white py-2 px-6 rounded-md shadow hover:bg-green-700 active:bg-green-800 transition-colors font-semibold min-h-[44px]"
-            >
-              Export to CSV
-            </button>
+                onClick={exportToCSV}
+                className="aviation-btn-secondary py-2 px-6 rounded-md shadow transition-colors font-semibold min-h-[44px]"
+              >
+                Export CSV
+              </button>
           </div>
 
           {/* How It Works Section */}
@@ -795,9 +801,9 @@ export default function Home() {
 
           {/* Typical PPL Costs Summary */}
           <section className="aviation-card rounded-xl p-6 mb-8 border border-sky-200 dark:border-sky-800 shadow-lg">
-            <div className="flex items-center gap-2 mb-4">
-              <AviationIcon type="gauge" size={20} />
-              <h2 className="text-2xl font-bold text-cockpit-blue dark:text-sky-400">Typical PPL Costs</h2>
+            <div className="flex items-center gap-3 mb-6">
+              <AviationIcon type="gauge" size={28} />
+              <h2 className="text-3xl font-bold font-aviation text-cockpit-blue dark:text-sky-400">Typical PPL Costs</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
               <div className="p-3 rounded-lg bg-white/70 dark:bg-gray-800/70 border border-sky-100 dark:border-sky-900">
@@ -828,7 +834,7 @@ export default function Home() {
         {showScrollTop && (
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-6 right-6 z-40 bg-sky-600 text-white rounded-full w-12 h-12 shadow-lg flex items-center justify-center hover:bg-sky-700 focus-visible:ring-2 focus-visible:ring-sky-500"
+            className="fixed bottom-6 right-6 z-40 aviation-btn-primary rounded-full w-12 h-12 shadow-lg flex items-center justify-center focus-visible:ring-2 focus-visible:ring-aviation-orange"
             aria-label="Scroll to top"
           >
             <svg className="w-6 h-6" viewBox="0 0 20 20" fill="currentColor"><path d="M3 12l7-7 7 7H3z"/></svg>
@@ -849,7 +855,7 @@ export default function Home() {
                 <li>Review category breakdown and export CSV for records.</li>
               </ol>
               <div className="text-right mt-4">
-                <button onClick={() => setShowGuide(false)} className="bg-sky-600 text-white px-4 py-2 rounded-md hover:bg-sky-700">Got it</button>
+                <button onClick={() => setShowGuide(false)} className="aviation-btn-primary px-4 py-2 rounded-md">Got it</button>
               </div>
             </div>
           </div>
@@ -884,7 +890,7 @@ export default function Home() {
                     placeholder="Amount ($)"
                     value={editAmount}
                     onChange={(e) => setEditAmount(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 aviation-input rounded-lg focus:outline-none"
                     required
                   />
                 </div>
@@ -897,7 +903,7 @@ export default function Home() {
                     id="edit-category"
                     value={editCategory}
                     onChange={(e) => setEditCategory(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 aviation-select rounded-lg focus:outline-none"
                     required
                   >
                     <option value="">Select a category</option>
@@ -916,7 +922,7 @@ export default function Home() {
                     id="edit-date"
                     value={editDate}
                     onChange={(e) => setEditDate(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 aviation-input rounded-lg focus:outline-none"
                     required
                   />
                 </div>
@@ -925,24 +931,24 @@ export default function Home() {
                   <label htmlFor="edit-notes" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Notes (optional)
                   </label>
-                  <input
-                    type="text"
+                  <textarea
                     id="edit-notes"
                     placeholder="Notes (optional)"
                     value={editNotes}
                     onChange={(e) => setEditNotes(e.target.value)}
                     maxLength={200}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 aviation-input rounded-lg focus:outline-none"
+                    rows={3}
                   />
                 </div>
 
                 <div className="flex space-x-3 pt-4">
                   <button
-                    type="submit"
-                    className="flex-1 bg-blue-900 dark:bg-blue-800 text-white py-2 px-4 rounded-md hover:bg-blue-800 dark:hover:bg-blue-700 active:bg-blue-900 transition-colors font-medium"
-                  >
-                    Update Expense
-                  </button>
+                  type="submit"
+                  className="flex-1 aviation-btn-primary py-2 px-4 rounded-md transition-colors font-medium"
+                >
+                  Update
+                </button>
                   <button
                     type="button"
                     onClick={handleCancelEdit}

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -199,12 +200,12 @@
 
 /* Aviation-themed card styles */
 .aviation-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.95) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 50%, rgba(240, 249, 255, 0.95) 100%);
+  border: 1px solid rgba(14, 165, 233, 0.15);
   box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 4px 6px -1px rgba(14, 165, 233, 0.1),
+    0 2px 4px -1px rgba(14, 165, 233, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -215,25 +216,27 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--sky-blue), var(--cockpit-blue));
+  height: 3px;
+  background: linear-gradient(90deg, var(--sky-blue) 0%, var(--aviation-orange) 50%, var(--cockpit-blue) 100%);
 }
 
 .dark .aviation-card {
-  background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(15, 23, 42, 0.95) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.15) 0%, rgba(15, 23, 42, 0.95) 50%, rgba(51, 65, 85, 0.1) 100%);
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  box-shadow: 
+    0 4px 6px -1px rgba(14, 165, 233, 0.15),
+    0 2px 4px -1px rgba(14, 165, 233, 0.1);
 }
 
 /* Aviation-themed buttons */
 .aviation-btn-primary {
-  background: linear-gradient(135deg, var(--cockpit-blue) 0%, var(--horizon-blue) 100%);
-  border: 1px solid rgba(30, 58, 138, 0.2);
-  box-shadow: 
-    0 4px 6px -1px rgba(30, 58, 138, 0.3),
-    0 2px 4px -1px rgba(30, 58, 138, 0.2);
-  transition: all 0.2s ease;
+  background: linear-gradient(to right, #FF8600, #FF8600);
+  color: white;
+  font-weight: 600;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 134, 0, 0.3);
 }
 
 .aviation-btn-primary::before {
@@ -244,7 +247,7 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
+  transition: left 0.5s;
 }
 
 .aviation-btn-primary:hover::before {
@@ -252,29 +255,77 @@
 }
 
 .aviation-btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 
-    0 10px 15px -3px rgba(30, 58, 138, 0.3),
-    0 4px 6px -2px rgba(30, 58, 138, 0.2);
+  box-shadow: 0 6px 20px rgba(255, 134, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.aviation-btn-secondary {
+  background: linear-gradient(to right, #35C759, #35C759);
+  color: white;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(53, 199, 89, 0.3);
+}
+
+.aviation-btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.aviation-btn-secondary:hover::before {
+  left: 100%;
+}
+
+.aviation-btn-secondary:hover {
+  box-shadow: 0 6px 20px rgba(53, 199, 89, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Aviation-themed form elements */
 .aviation-input {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background-color: #f9fafb;
+  border: 1px solid #d1d5db;
+  color: #111827;
   transition: all 0.2s ease;
 }
 
-.aviation-input:focus {
-  border-color: var(--sky-blue);
-  box-shadow: 
-    0 0 0 3px rgba(14, 165, 233, 0.1),
-    0 4px 6px -1px rgba(14, 165, 233, 0.1);
+.dark .aviation-input {
+  background-color: #1f2937;
+  border-color: #4b5563;
+  color: #f9fafb;
 }
 
-.dark .aviation-input {
-  background: rgba(30, 58, 138, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+.aviation-input:focus {
+  border-color: #FF8600;
+  box-shadow: 0 0 0 2px rgba(255, 134, 0, 0.2);
+  outline: none;
+}
+
+.aviation-select {
+  background-color: #f9fafb;
+  border: 1px solid #d1d5db;
+  color: #111827;
+  transition: all 0.2s ease;
+}
+
+.dark .aviation-select {
+  background-color: #1f2937;
+  border-color: #4b5563;
+  color: #f9fafb;
+}
+
+.aviation-select:focus {
+  border-color: #FF8600;
+  box-shadow: 0 0 0 2px rgba(255, 134, 0, 0.2);
+  outline: none;
 }
 
 /* Aviation-themed progress bars */
