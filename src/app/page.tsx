@@ -580,30 +580,7 @@ export default function Home() {
 
         <main role="main" id="main-content">
           <article>
-            {/* How It Works Section */}
-            <HowItWorks />
 
-            {/* Typical PPL Costs Summary */}
-            <section className="aviation-card rounded-xl p-6 mb-8 border border-sky-200 dark:border-sky-800 shadow-lg">
-              <div className="flex items-center gap-2 mb-4">
-                <AviationIcon type="gauge" size={20} />
-                <h2 className="text-2xl font-bold text-cockpit-blue dark:text-sky-400">Typical PPL Costs</h2>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-                <div className="p-3 rounded-lg bg-white/70 dark:bg-gray-800/70 border border-sky-100 dark:border-sky-900">
-                  <div className="font-semibold">Aircraft Rental</div>
-                  <div className="text-wing-gray">$150–200/hr</div>
-                </div>
-                <div className="p-3 rounded-lg bg-white/70 dark:bg-gray-800/70 border border-sky-100 dark:border-sky-900">
-                  <div className="font-semibold">Instructor Time</div>
-                  <div className="text-wing-gray">$50–75/hr</div>
-                </div>
-                <div className="p-3 rounded-lg bg-white/70 dark:bg-gray-800/70 border border-sky-100 dark:border-sky-900">
-                  <div className="font-semibold">Materials & Fees</div>
-                  <div className="text-wing-gray">$1,000+</div>
-                </div>
-              </div>
-            </section>
 
             {/* Add Expense Form */}
             <section id="add-expense" className="aviation-card rounded-xl p-6 mb-8 hover-lift border border-sky-200 dark:border-sky-800 shadow-lg" aria-label="Add expense form">
@@ -723,15 +700,7 @@ export default function Home() {
             </form>
           </section>
 
-          {/* Export Button */}
-          <div className="mb-6 text-center">
-            <button
-              onClick={exportToCSV}
-              className="bg-green-600 text-white py-2 px-6 rounded-md shadow hover:bg-green-700 active:bg-green-800 transition-colors font-semibold min-h-[44px]"
-            >
-              Export to CSV
-            </button>
-          </div>
+
 
           {/* Category Breakdown */}
           {categoryBreakdown.length > 0 && (
@@ -762,7 +731,7 @@ export default function Home() {
           )}
 
           {/* Expense List */}
-          <section id="expenses" className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-sky-200 dark:border-sky-800 p-6">
+          <section id="expenses" className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-sky-200 dark:border-sky-800 p-6 mb-8">
             <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">Expenses</h2>
             {expenses.length === 0 ? (
               <div className="text-center py-8 text-gray-600 dark:text-gray-400">
@@ -810,6 +779,43 @@ export default function Home() {
               </div>
             )}
           </section>
+
+          {/* Export Button */}
+          <div className="mb-8 text-center">
+            <button
+              onClick={exportToCSV}
+              className="bg-green-600 text-white py-2 px-6 rounded-md shadow hover:bg-green-700 active:bg-green-800 transition-colors font-semibold min-h-[44px]"
+            >
+              Export to CSV
+            </button>
+          </div>
+
+          {/* How It Works Section */}
+          <HowItWorks />
+
+          {/* Typical PPL Costs Summary */}
+          <section className="aviation-card rounded-xl p-6 mb-8 border border-sky-200 dark:border-sky-800 shadow-lg">
+            <div className="flex items-center gap-2 mb-4">
+              <AviationIcon type="gauge" size={20} />
+              <h2 className="text-2xl font-bold text-cockpit-blue dark:text-sky-400">Typical PPL Costs</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+              <div className="p-3 rounded-lg bg-white/70 dark:bg-gray-800/70 border border-sky-100 dark:border-sky-900">
+                <div className="font-semibold">Aircraft Rental</div>
+                <div className="text-wing-gray">$150–200/hr</div>
+              </div>
+              <div className="p-3 rounded-lg bg-white/70 dark:bg-gray-800/70 border border-sky-100 dark:border-sky-900">
+                <div className="font-semibold">Instructor Time</div>
+                <div className="text-wing-gray">$50–75/hr</div>
+              </div>
+              <div className="p-3 rounded-lg bg-white/70 dark:bg-gray-800/70 border border-sky-100 dark:border-sky-900">
+                <div className="font-semibold">Materials & Fees</div>
+                <div className="text-wing-gray">$1,000+</div>
+              </div>
+            </div>
+          </section>
+
+
 
           {/* PWA Status Section */}
           <section id="pwa-status" className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-sky-200 dark:border-sky-800 p-6 mb-8">
