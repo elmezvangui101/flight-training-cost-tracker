@@ -7,6 +7,14 @@ import { HowItWorks } from '@/components/how-it-works';
 import { FAQ } from '@/components/faq';
 import { Footer } from '@/components/footer';
 import { AviationIcon, AviationBackground } from '@/components/aviation-icons';
+import { 
+  trackExpenseAdded, 
+  trackExpenseDeleted, 
+  trackExpenseEdited, 
+  trackBudgetSet, 
+  trackDataExported,
+  trackThemeToggled 
+} from '@/components/analytics';
 
 interface Expense {
   id: number;
@@ -122,6 +130,10 @@ export default function Home() {
   const toggleDarkMode = () => {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
+    
+    // Track theme toggle
+    trackThemeToggled(newDarkMode ? 'dark' : 'light');
+    
     try {
       localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
     } catch (error) {
@@ -154,6 +166,10 @@ export default function Home() {
     const goal = parseFloat(budgetInput);
     if (!isNaN(goal) && goal > 0) {
       saveBudgetGoal(goal);
+      
+      // Track budget setting
+      trackBudgetSet(goal);
+      
       setShowBudgetSettings(false);
       setSuccess('Budget goal set successfully!');
       setTimeout(() => setSuccess(''), 3000);
@@ -261,6 +277,9 @@ export default function Home() {
     setExpenses(updatedExpenses);
     saveToLocalStorage(updatedExpenses);
 
+    // Track expense addition
+    trackExpenseAdded(category, parseFloat(amount));
+
     // Clear form
     setAmount('');
     setCategory('');
@@ -273,9 +292,15 @@ export default function Home() {
 
   const handleDelete = (id: number, amount: number) => {
     if (confirm(`Delete this $${amount.toFixed(2)} expense?`)) {
+      const expenseToDelete = expenses.find(exp => exp.id === id);
       const updatedExpenses = expenses.filter(exp => exp.id !== id);
       setExpenses(updatedExpenses);
       saveToLocalStorage(updatedExpenses);
+      
+      // Track expense deletion
+      if (expenseToDelete) {
+        trackExpenseDeleted(expenseToDelete.category);
+      }
     }
   };
 
@@ -333,6 +358,10 @@ export default function Home() {
     
     setExpenses(updatedExpenses);
     saveToLocalStorage(updatedExpenses);
+    
+    // Track expense editing
+    trackExpenseEdited(editCategory, parseFloat(editAmount));
+    
     handleCancelEdit();
     
     setSuccess('Expense updated successfully!');
@@ -380,6 +409,10 @@ export default function Home() {
     a.click();
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
+    
+    // Track CSV export
+    trackDataExported('CSV');
+    
     setExportSuccess('CSV exported successfully!');
     setTimeout(() => setExportSuccess(''), 3000);
   };
