@@ -4,13 +4,13 @@
   "private": true,
   "description": "A comprehensive flight training cost tracker with budget management, expense categorization, and progress monitoring",
   "keywords": ["flight-training", "cost-tracker", "aviation", "budget", "expenses", "pwa"],
-  "author": "Your Name",
+  "author": "elmezvangui101",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/flight-training-cost-tracker.git"
+    "url": "https://github.com/elmezvangui101/flight-training-cost-tracker.git"
   },
-  "homepage": "https://flight-training-cost-tracker.vercel.app",
+  "homepage": "https://flight-training-cost-tracker-v2.vercel.app",
   "scripts": {
     "dev": "nodemon --exec \"npx tsx server.ts\" --watch server.ts --watch src --ext ts,tsx,js,jsx 2>&1 | tee dev.log",
     "build": "next build",

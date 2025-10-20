@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     "msapplication-TileColor": "#FF8600",
     "msapplication-config": "/browserconfig.xml",
     // Replace with your actual Google Search Console verification code
-    "google-site-verification": "OHtOxQy7MFhK4P4IW-qNsWpDk3gAw5vj2-cFMsdFRgY",
+    "google-site-verification": "5fydZO8oq-NRzEJhXUWAHQD5uGZeSiuwN3WtzquTEFM",
   },
 };
 
