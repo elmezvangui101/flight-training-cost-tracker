@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false,
   },
-  metadataBase: new URL('https://flightcosttracker.com'),
+  metadataBase: new URL('https://flight-training-cost-tracker-v2.vercel.app'),
   alternates: {
     canonical: '/',
   },
@@ -79,7 +79,8 @@ export const metadata: Metadata = {
     "apple-mobile-web-app-title": "FlightCost",
     "msapplication-TileColor": "#FF8600",
     "msapplication-config": "/browserconfig.xml",
-    "google-site-verification": "YOUR_VERIFICATION_CODE",
+    // Replace with your actual Google Search Console verification code
+    "google-site-verification": "OHtOxQy7MFhK4P4IW-qNsWpDk3gAw5vj2-cFMsdFRgY",
   },
 };
 
@@ -126,7 +127,7 @@ export default function RootLayout({
                 "Mobile-friendly interface",
                 "Free forever"
               ],
-              "screenshot": "https://flightcosttracker.com/screenshot.png"
+              "screenshot": "https://flight-training-cost-tracker-v2.vercel.app/screenshot.png"
             })
           }}
         />
@@ -163,6 +164,27 @@ export default function RootLayout({
                   }
                 }
               ]
+            })
+          }}
+        />
+        
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Aviation Cost Tracker",
+              "url": "https://flight-training-cost-tracker-v2.vercel.app",
+               "logo": "https://flight-training-cost-tracker-v2.vercel.app/icons/icon-512x512.png",
+              "description": "Free flight training cost tracking application for pilots and aviation organizations",
+              "sameAs": [],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "availableLanguage": "English"
+              }
             })
           }}
         />

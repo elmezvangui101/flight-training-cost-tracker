@@ -11,7 +11,7 @@ Allow: /sw.js
 Allow: /icons/
 
 # Sitemap location
-Sitemap: https://flightcosttracker.com/sitemap.xml
+Sitemap: https://flight-training-cost-tracker-v2.vercel.app/sitemap.xml
 
 # Crawl delay (optional, be respectful)
 Crawl-delay: 1
