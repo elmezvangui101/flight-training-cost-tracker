@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, XCircle, Wifi, WifiOff, Download, Smartphone, Monitor } from 'lucide-react';
+import { CheckCircle, XCircle, Wifi, WifiOff, Download, Smartphone, Monitor, Loader2 } from 'lucide-react';
 
 export function PWATest() {
   const [isOnline, setIsOnline] = useState(true);
@@ -13,6 +13,10 @@ export function PWATest() {
   const [isInstallable, setIsInstallable] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
   const [cacheInfo, setCacheInfo] = useState<string[]>([]);
+  const [statusMessage, setStatusMessage] = useState<string>('');
+  const [statusType, setStatusType] = useState<'success' | 'error' | 'info' | ''>('');
+  const [isClearingCache, setIsClearingCache] = useState(false);
+  const [isTestingOffline, setIsTestingOffline] = useState(false);
 
   useEffect(() => {
     // Check online status
@@ -50,30 +54,63 @@ export function PWATest() {
   }, []);
 
   const testOfflineMode = async () => {
-    // Simulate going offline and test cached content
+    setIsTestingOffline(true);
+    setStatusMessage('Testing offline mode...');
+    setStatusType('info');
     try {
       const response = await fetch('/');
       if (response.ok) {
-        alert('✅ App works offline! Content served from cache.');
+        setStatusMessage('App works offline! Content served from cache.');
+        setStatusType('success');
+      } else {
+        setStatusMessage('Offline mode test did not return OK.');
+        setStatusType('error');
       }
     } catch (error) {
-      alert('❌ Offline mode not working properly.');
+      setStatusMessage('Offline mode not working properly.');
+      setStatusType('error');
+    } finally {
+      setIsTestingOffline(false);
+      setTimeout(() => setStatusMessage(''), 3000);
     }
   };
 
   const clearCache = async () => {
+    setIsClearingCache(true);
+    setStatusMessage('Clearing cache...');
+    setStatusType('info');
     try {
       const cacheNames = await caches.keys();
       await Promise.all(cacheNames.map(name => caches.delete(name)));
       setCacheInfo([]);
-      alert('✅ Cache cleared successfully!');
+      setStatusMessage('Cache cleared successfully!');
+      setStatusType('success');
     } catch (error) {
-      alert('❌ Failed to clear cache.');
+      setStatusMessage('Failed to clear cache.');
+      setStatusType('error');
+    } finally {
+      setIsClearingCache(false);
+      setTimeout(() => setStatusMessage(''), 3000);
     }
   };
 
   return (
     <div className="space-y-6">
+      {statusMessage && (
+        <div className={`rounded-md p-3 border ${
+          statusType === 'success' ? 'bg-green-50 border-green-200 text-green-700' :
+          statusType === 'error' ? 'bg-red-50 border-red-200 text-red-700' :
+          'bg-blue-50 border-blue-200 text-blue-700'
+        }`} role="status" aria-live="polite">
+          <div className="flex items-center gap-2">
+            {statusType === 'success' && <CheckCircle className="h-4 w-4" />}
+            {statusType === 'error' && <XCircle className="h-4 w-4" />}
+            {statusType === 'info' && <Loader2 className="h-4 w-4 animate-spin" />}
+            <span className="text-sm">{statusMessage}</span>
+          </div>
+        </div>
+      )}
+
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -146,10 +183,12 @@ export function PWATest() {
           )}
           
           <div className="flex gap-2">
-            <Button onClick={testOfflineMode} variant="outline" size="sm">
+            <Button onClick={testOfflineMode} variant="outline" size="sm" disabled={isTestingOffline}>
+              {isTestingOffline && <Loader2 className="h-4 w-4 animate-spin mr-1" />}
               Test Offline Mode
             </Button>
-            <Button onClick={clearCache} variant="outline" size="sm">
+            <Button onClick={clearCache} variant="outline" size="sm" disabled={isClearingCache}>
+              {isClearingCache && <Loader2 className="h-4 w-4 animate-spin mr-1" />}
               Clear Cache
             </Button>
           </div>
