@@ -817,10 +817,7 @@ export default function Home() {
 
 
 
-          {/* PWA Status Section */}
-          <section id="pwa-status" className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-sky-200 dark:border-sky-800 p-6 mb-8">
-            <PWATest />
-          </section>
+
 
           {/* FAQ Section */}
           <FAQ />
